@@ -53,8 +53,11 @@ class Game:
         row, col = move.row, move.col
         # TODO: check that the current move has not been played already 
         # and that there is no winner yet. Note that non-played cells
-        # contain an empty string (i.e. ""). 
+        # contain an empty string (i.e. "").
         # Use variables no_winner and move_not_played.
+
+        move_not_played = self._current_moves[row][col].label == ""
+        no_winner = not self._has_winner
         
         return no_winner and move_not_played
 
@@ -76,6 +79,14 @@ class Game:
         """Return True if the game is tied, and False otherwise."""
         # TODO: check whether a tie was reached.
         # There is no winner and all moves have been tried.
+        for row in self._current_moves:
+            for col in row:
+                if col.label != "": return False
+        
+        if self._has_winner:
+            return False
+        else: 
+            return True
 
     def toggle_player(self):
         """Return a toggled player."""
