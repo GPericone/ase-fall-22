@@ -53,8 +53,11 @@ class Game:
         row, col = move.row, move.col
         # TODO: check that the current move has not been played already 
         # and that there is no winner yet. Note that non-played cells
-        # contain an empty string (i.e. ""). 
+        # contain an empty string (i.e. "").
         # Use variables no_winner and move_not_played.
+
+        move_not_played = self._current_moves[row][col].label == ""
+        no_winner = len(self._winning_combos) == 0
         
         return no_winner and move_not_played
 
