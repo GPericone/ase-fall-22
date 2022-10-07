@@ -57,7 +57,7 @@ class Game:
         # Use variables no_winner and move_not_played.
 
         move_not_played = self._current_moves[row][col].label == ""
-        no_winner = len(self._winning_combos) == 0
+        no_winner = not self._has_winner
         
         return no_winner and move_not_played
 
