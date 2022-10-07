@@ -72,17 +72,17 @@ class Game:
         sign = self.current_player.label
         count = 0
         for row in self._winning_combos:
-        	for cel in row:
-        		app = self.current_moves[cel[0]][cel[1]].label
-        		if app != sign:
-        			break
-        		count++
-        	if count == 3:
-        		row_ok = row
-        		break
+            for cel in row:
+                app = self._current_moves[cel[0]][cel[1]].label
+                if app != sign:
+                    break
+                count = count + 1
+            if count == 3:
+                row_ok = row
+            break
         if count == 3:
-        	self._has_winner = True
-        	self.winner_combo = row_ok
+            self._has_winner = True
+            self.winner_combo = row_ok
 
     def has_winner(self):
         """Return True if the game has a winner, and False otherwise."""
