@@ -66,7 +66,20 @@ class Game:
         # Do not return any values but set variables  self._has_winner 
         # and self.winner_combo in case of winning combo.
         # Hint: you can scan pre-computed winning combos in self._winning_combos
-
+        sign = self.current_player.label
+        count = 0
+        for row in self._winning_combos:
+        	for cel in row:
+        		app = self.current_moves[cel[0]][cel[1]].label
+        		if app != sign:
+        			break
+        		count++
+        	if count == 3:
+        		row_ok = row
+        		break
+        if count == 3:
+        	self._has_winner = True
+        	self.winner_combo = row_ok
 
     def has_winner(self):
         """Return True if the game has a winner, and False otherwise."""
