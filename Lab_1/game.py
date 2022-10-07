@@ -79,6 +79,14 @@ class Game:
         """Return True if the game is tied, and False otherwise."""
         # TODO: check whether a tie was reached.
         # There is no winner and all moves have been tried.
+        for row in self._current_moves:
+            for col in row:
+                if col.label != "": return False
+        
+        if self._has_winner:
+            return False
+        else: 
+            return True
 
     def toggle_player(self):
         """Return a toggled player."""
