@@ -81,6 +81,9 @@ class Game:
         """Return a toggled player."""
         # TODO: switches self.current_player to the other player.
         # Hint: https://docs.python.org/3/library/functions.html#next
+        self.current_player = next(self._players)
+        
+        
        
     def reset_game(self):
         """Reset the game state to play again."""
