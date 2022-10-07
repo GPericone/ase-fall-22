@@ -70,16 +70,18 @@ class Game:
         # and self.winner_combo in case of winning combo.
         # Hint: you can scan pre-computed winning combos in self._winning_combos
         sign = self.current_player.label
+        print(sign)
         count = 0
         for row in self._winning_combos:
             for cel in row:
                 app = self._current_moves[cel[0]][cel[1]].label
                 if app != sign:
+                    count = 0
                     break
                 count = count + 1
             if count == 3:
                 row_ok = row
-            break
+                break
         if count == 3:
             self._has_winner = True
             self.winner_combo = row_ok
@@ -94,7 +96,7 @@ class Game:
         # There is no winner and all moves have been tried.
         for row in self._current_moves:
             for col in row:
-                if col.label != "": return False
+                if col.label == "": return False
         
         if self._has_winner:
             return False
